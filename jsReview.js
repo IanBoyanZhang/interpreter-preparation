@@ -90,9 +90,24 @@ var count = function(tree) {
   return counter;
 };
 
+// now in recursive way
+var count = function(tree) {
+  var rtnCounter = 1;
+  if (tree === null) {
+    return 0;
+  }
+  if (tree.right !== 0) {
+    rtnCounter += count(tree.right);
+  }
+  if (tree.left !== 0) {
+    rtnCounter += count(tree.left);
+  }
+  return rtnCounter;
+};
+
 console.log(count(null));
 var bst = create_tree(['b', 'a']);
 console.log(count((bst)));
-bst = create_tree(['b', 'a', 'd', 'e', 'c']);
-//bst = create_tree([10, 5, 2, 3, 4, 1, 6, 7, 8, 9]);
+//bst = create_tree(['b', 'a', 'd', 'e', 'c']);
+bst = create_tree([10, 5, 2, 3, 4, 1, 6, 7, 8, 9]);
 console.log(count(bst));
