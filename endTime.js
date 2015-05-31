@@ -1,3 +1,4 @@
+// end time
 var melody1_mus = { tag: 'note', pitch: 'a4', dur: 125};
 var melody2_mus = 
     { tag: 'seq',
@@ -27,3 +28,7 @@ var endTime = function (time, expr) {
 };
 
 console.log(endTime(0, melody2_mus));
+
+var compile = function (musexpr) {
+
+}

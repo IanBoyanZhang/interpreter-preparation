@@ -29,15 +29,25 @@ var reverse = function(expr) {
     if (tree.left === undefined && tree.right === undefined) {
       return;
     }
+    recursive_rev(tree.right);
+    recursive_rev(tree.left);
     var temp = tree.left;
     tree.left = tree.right;
     tree.right = temp;
-    recursive_rev(tree.right);
-    recursive_rev(tree.left);
   };
 
   recursive_rev(tree);
   return tree;
+};
+
+// Improvement
+var reverse = function(expr) {
+  if (expr.tag === "note") {
+    return expr;
+  } else {
+    return {tag: 'seq', left: reverse(expr.right),
+            right: reverse(expr.left)}
+  }
 };
 
 //console.log(reverse(melody1));
