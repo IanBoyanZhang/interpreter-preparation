@@ -27,6 +27,14 @@ var endTime = function (time, expr) {
   return timeSum + time;
 };
 
+// Better solution
+var endTime = function (time, expr) {
+  if (expr.tag === 'note') {
+    return time + expr.dur;
+  }
+  return endTime(endTime(time, expr.left), expr.right);
+}
+
 console.log(endTime(0, melody2_mus));
 
 var compile = function (musexpr) {
